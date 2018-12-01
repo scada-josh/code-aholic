@@ -1,0 +1,109 @@
+{% set posts = blogPosts.posts %}
+
+
+    {% for post in posts %}
+
+		<article>
+			<div class="post-image">
+				<div class="post-heading">
+					<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+				</div>
+
+				{% if ((post.featured_images.count > 0) and (post.featured_images.count < 2)) %}
+
+					{% for image in post.featured_images|slice(0, 1) %}
+						<img src="{{ image.path }}" alt="" />
+					{% endfor %}
+
+				{% elseif post.featured_images.count >= 2 %}
+					<!-- start flexslider -->
+					<div id="post-slider-{{loop.index}}"  class="flexslider" data-container="{{loop.index}}">
+						<ul class="slides">
+							{% for image in post.featured_images %}
+							<li>
+								<img data-src="{{ image.filename }}" src="{{ image.path }}" alt="{{ image.description }}"  />
+							</li>
+							{% endfor %}
+						</ul>
+					</div>
+					<!-- end flexslider -->
+
+				{% else %}
+					<!-- <img src="{{ 'assets/dist/img/dummies/blog/img1.jpg'|theme}}" alt="" /> -->
+				{% endif %}
+			</div>
+			<p>
+				{{ post.summary|raw }}
+			</p>
+			<div class="bottom-article">
+				<ul class="meta-post">
+					<li><i class="icon-calendar"></i><a href="#"> {{ post.published_at|date('M d, Y') }}</a></li>
+					<li>
+						{% if post.featured_images.count %}
+							<i class="icon-user"></i>
+							<a href="#"> {{ post.user.first_name }}</a>
+						{% else %}
+							<i class="icon-user"></i>
+							<a href="#">Blank</a>
+						{% endif %}
+					</li>
+					<li><i class="icon-folder-open"></i>
+						{% for category in post.categories %}
+						<a href="{{ category.url }}">{{ category.name }} {% if not loop.last %},{% endif %}
+						</a>
+						{% endfor %}
+					</li>
+					<!-- <li><i class="icon-comments"></i><a href="#">4 Comments</a></li> -->
+				</ul>
+				<a href="{{ post.url }}" class="pull-right">Continue reading <i class="icon-angle-right"></i></a>
+			</div>
+
+		</article>
+
+    {% endfor %}
+
+
+<!-- {% if posts.lastPage > 1 %}
+    <ul class="pagination">
+        {% if posts.currentPage > 1 %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">← Prev</a></li>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+            <li class="{{ posts.currentPage == page ? 'active' : null }}">
+                <a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}">{{ page }}</a>
+            </li>
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <li><a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next →</a></li>
+        {% endif %}
+    </ul>
+{% endif %} -->
+
+
+{% if posts.lastPage > 1 %}
+    <div id="pagination">
+        {% if posts.currentPage > 1 %}
+            <a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage-1) }) }}">&larr; Prev</a>
+        {% endif %}
+
+        {% for page in 1..posts.lastPage %}
+
+        	{% if posts.currentPage == page %}
+				<span class="current">{{ page }}</span>
+			{% else %}
+				<a href="{{ this.page.baseFileName|page({ (pageParam): page }) }}" class="inactive">{{ page }}</a>
+
+        	{% endif %}
+
+        {% endfor %}
+
+        {% if posts.lastPage > posts.currentPage %}
+            <a href="{{ this.page.baseFileName|page({ (pageParam): (posts.currentPage+1) }) }}">Next &rarr;</a>
+        {% endif %}
+    </div>
+{% endif %}
+
+
+

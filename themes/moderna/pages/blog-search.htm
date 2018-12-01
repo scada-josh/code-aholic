@@ -1,0 +1,74 @@
+title = "Blog Search"
+url = "/blog-search/:slug"
+layout = "moderna-layout-01"
+is_hidden = 0
+
+[blogTagSearch]
+tag = "{{ :slug }}"
+page = "{{ :page }}"
+resultsPerPage = 10
+postPage = "blog-post"
+categoryPage = "blog"
+
+[blogPost]
+slug = "{{ :slug }}"
+categoryPage = "blog/category"
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+categoryPage = "blog"
+
+[popularPosts]
+category = "{{ :category }}"
+postsLimit = 3
+noPostsMessage = "No posts found"
+postPage = "blog/post"
+
+[blogTags]
+results = 5
+direction = "desc"
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+searchPage = "search.htm"
+==
+<section id="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+
+                {% partial 'site/blog/_blog_search' %}
+
+            </div>
+
+            <div class="col-lg-4">
+                <aside class="right-sidebar">
+                    <div class="widget">
+
+                        {% partial 'site/blog/_search_page' %}
+                        
+                    </div>
+                    <div class="widget">
+
+                        {% partial 'site/blog/_categories' %}
+
+                    </div>
+                    <div class="widget">
+
+                        {% partial 'site/blog/_popular_posts' %}
+
+                    </div>
+                    <div class="widget">
+
+                        {% partial 'site/blog/_tags' %}
+
+
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,86 @@
+title = "Blog"
+url = "/blog/:slug/:page"
+layout = "moderna-layout-01"
+is_hidden = 0
+
+[blogCategories]
+slug = "{{ :slug }}"
+displayEmpty = 1
+categoryPage = "blog"
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+categoryFilter = "{{ :slug }}"
+postsPerPage = 5
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = "blog"
+postPage = "blog-post"
+
+[popularPosts]
+category = "{{ :category }}"
+postsLimit = 3
+noPostsMessage = "No posts found"
+postPage = "blog-post"
+
+[blogTags]
+results = 5
+direction = "desc"
+
+[blogTagSearch]
+tag = "{{ :tag }}"
+page = "{{ :page }}"
+resultsPerPage = 10
+postPage = "blog"
+categoryPage = "blog"
+
+[searchInput]
+useAutoComplete = 1
+autoCompleteResultCount = 5
+showProviderBadge = 1
+searchPage = "search.htm"
+
+[session]
+security = "user"
+redirect = "login"
+==
+{% component 'session' %}
+
+<section id="content">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-8">
+
+				{% partial 'site/blog/_articles' %}
+
+			</div>
+
+			<div class="col-lg-4">
+				<aside class="right-sidebar">
+					<div class="widget">
+
+						{% partial 'site/blog/_search_page' %}
+
+
+					</div>
+					<div class="widget">
+
+						{% partial 'site/blog/_categories' %}
+
+					</div>
+					<div class="widget">
+
+						{% partial 'site/blog/_popular_posts' %}
+
+					</div>
+					<div class="widget">
+
+						{% partial 'site/blog/_tags' %}
+
+
+					</div>
+				</aside>
+			</div>
+		</div>
+	</div>
+</section>

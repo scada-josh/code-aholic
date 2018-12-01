@@ -1,0 +1,10 @@
+name: GenreTest
+form: $/devjosh/movies/models/genre/fields.yaml
+modelClass: Devjosh\Movies\Models\Genre
+defaultRedirect: devjosh/movies/genretest
+create:
+    redirect: 'devjosh/movies/genretest/update/:id'
+    redirectClose: devjosh/movies/genretest
+update:
+    redirect: devjosh/movies/genretest
+    redirectClose: devjosh/movies/genretest

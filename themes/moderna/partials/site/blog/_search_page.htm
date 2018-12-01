@@ -1,0 +1,26 @@
+					<!-- 	<form class="form-search" action="{{ 'search' | page }}" method="get">
+							<input class="form-control" name="q" type="text" placeholder="Search.." autocomplete="off">
+							<button type="submit">Search</button>
+						</form> -->
+
+						<!-- <form class="form-search">
+							<input class="form-control" type="text" placeholder="Search..">
+						</form> -->
+
+
+<form class="form-search" action="{{ searchInput.searchPage | page }}?q={{ query | url_encode(true) }}" method="get">
+    <div class="ss-search-form">
+        <div class="ss-search-form__input">
+            <input class="form-control" name="q" type="text" placeholder="Search.." autocomplete="off"
+                    {% if searchInput.useAutoComplete %}
+                        data-track-input
+                        data-request="{{ searchInput }}::onType"
+                        data-request-before-update="document.getElementById('autocomplete-results').classList.add('ss-search-form__results--visible')"
+                        data-request-update="'{{ searchInput }}::autocomplete': '#autocomplete-results'"
+                    {% endif %}
+            >
+            <!-- <button class="ss-search-form__submit" type="submit">Search</button> -->
+        </div>
+        <div class="ss-search-form__results" id="autocomplete-results"></div>
+    </div>
+</form>

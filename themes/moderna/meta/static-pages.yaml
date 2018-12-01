@@ -1,0 +1,4 @@
+static-pages:
+    static-index:
+        static-index-static-about:
+            static-index-static-about-static-about-us: {  }

@@ -1,0 +1,23 @@
+1.0.1:
+    - 'Initialize plugin.'
+1.0.2:
+    - 'Created table devjosh_movies_main'
+    - builder_table_create_devjosh_movies_main.php
+1.0.3:
+    - 'Updated table devjosh_movies_main'
+    - builder_table_update_devjosh_movies_main.php
+1.0.4:
+    - 'Created table devjosh_movies_genres'
+    - builder_table_create_devjosh_movies_genres.php
+1.0.5:
+    - 'Created table devjosh_movies_movies_genres'
+    - builder_table_create_devjosh_movies_movies_genres.php
+1.0.6:
+    - 'Updated table devjosh_movies_main'
+    - builder_table_update_devjosh_movies_main_2.php
+1.0.7:
+    - 'Updated table devjosh_movies_main'
+    - builder_table_update_devjosh_movies_main_3.php
+1.0.8:
+    - 'Updated table devjosh_movies_main'
+    - builder_table_update_devjosh_movies_main_4.php

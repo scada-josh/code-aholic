@@ -1,0 +1,18 @@
+fields:
+    genre_title:
+        label: 'Title :'
+        span: auto
+        type: text
+    slug:
+        label: 'Slug :'
+        span: auto
+        preset:
+            field: genre_title
+            type: slug
+        type: text
+    movies:
+        label: 'Movie :'
+        nameFrom: name
+        descriptionFrom: description
+        span: auto
+        type: relation

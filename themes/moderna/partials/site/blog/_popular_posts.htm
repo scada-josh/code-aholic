@@ -1,0 +1,58 @@
+<h5 class="widgetheading">Popular posts</h5>
+
+{% set posts = popularPosts.posts %}
+
+<ul class="recent">
+	{% for post in posts %}
+	<li>
+		{% if (post.featured_images.count > 0) %}
+			<img src="{{ post.featured_images[0].thumb(65, 65, {'mode' : 'crop'}) }}" class="pull-left" alt="{{ post.featured_images[0].description }}">
+		{% else %}
+			<img src="{{ 'assets/dist/img/dummies/blog/65x65/thumb1.jpg'|theme}}" class="pull-left" alt="" />
+		{% endif %}
+		
+		<h6><a href="{{ post.url }}">{{ post.title }}</a></h6>
+			<div>
+			{% if post.excerpt %}
+			<p>
+				{% if post.excerpt|length > 50 %}
+				    {{ post.excerpt | truncate(50) }}
+				{% else %}
+					{{ post.excerpt | truncate(50) }}<br><br>
+				{% endif %}
+				
+			</p>
+			{% else %}
+			<p><br><br></p>
+			<!-- <p>{{ '&nbsp;' | str_repeat(3000) }}</p> -->
+			{% endif %}
+			</div>
+
+	</li>
+	{% endfor %}
+
+
+<!-- 	<li>
+		<img src="{{ 'assets/dist/img/dummies/blog/65x65/thumb1.jpg'|theme}}" class="pull-left" alt="" />
+		<h6><a href="#">Lorem ipsum dolor sit</a></h6>
+		<p>
+			Mazim alienum appellantur eu cu ullum officiis pro pri
+		</p>
+	</li>
+	<li>
+		<a href="#"><img src="{{ 'assets/dist/img/dummies/blog/65x65/thumb2.jpg'|theme}}" class="pull-left" alt="" /></a>
+		<h6><a href="#">Maiorum ponderum eum</a></h6>
+		<p>
+			Mazim alienum appellantur eu cu ullum officiis pro pri
+		</p>
+	</li>
+	<li>
+		<a href="#"><img src="{{ 'assets/dist/img/dummies/blog/65x65/thumb3.jpg'|theme}}" class="pull-left" alt="" /></a>
+		<h6><a href="#">Et mei iusto dolorum</a></h6>
+		<p>
+			Mazim alienum appellantur eu cu ullum officiis pro pri
+		</p>
+	</li> -->
+</ul>
+
+

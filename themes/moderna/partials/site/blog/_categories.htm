@@ -1,0 +1,54 @@
+<h5 class="widgetheading">Categories</h5>
+<!-- <ul class="cat">
+	<li><i class="icon-angle-right"></i><a href="#">Web design</a><span> (20)</span></li>
+	<li><i class="icon-angle-right"></i><a href="#">Online business</a><span> (11)</span></li>
+	<li><i class="icon-angle-right"></i><a href="#">Marketing strategy</a><span> (9)</span></li>
+	<li><i class="icon-angle-right"></i><a href="#">Technology</a><span> (12)</span></li>
+	<li><i class="icon-angle-right"></i><a href="#">About finance</a><span> (18)</span></li>
+</ul> -->
+
+<!-- {% if blogCategories.categories %}
+    <ul class="cat">
+
+        {% partial blogCategories ~ "::items"
+            categories = blogCategories.categories
+            currentCategorySlug = blogCategories.currentCategorySlug
+        %}
+    </ul>
+{% endif %} -->
+
+{% set categories = blogCategories.categories %}
+{% set currentCategorySlug = blogCategories.currentCategorySlug %}
+
+<!-- {{ blogCategories }} -->
+
+
+<ul class="cat">
+     {% for category in categories %}
+
+                <!-- {{ category.getPostCountAttribute() }} -->
+
+                
+
+            {% set postCount = category.post_count %}
+                <li></i><a  href="{{ category.url }}" {% if category.slug == currentCategorySlug %}style="color: #68A4C4;"{% endif %}>{{ category.name }}</a>&nbsp;<span class="badge pull-right" style="background-color:#68A4C4">{{postCount}}</span></li>
+            {% if category.children|length > 0 %}
+                
+                {% for category_children in category.children %}
+
+                    {% set postCount_children = category_children.post_count %}
+
+                    <!-- {{ category_children.getPostCountAttribute() }} -->
+
+                    <li> 
+                        <small>
+                        <i class="fa fa-angle-double-right" {% if category_children.slug == currentCategorySlug %}style="color: #68A4C4;"{% endif %}></i>&nbsp;<a href="{{ category_children.url }}" {% if category_children.slug == currentCategorySlug %}style="color: #68A4C4;"{% endif %}>{{ category_children.name }}</a>&nbsp;<span class="badge pull-right" style="background-color:#68A4C4">{{postCount_children}}</span>
+                        </small>
+                    </li>
+                
+                {% endfor %}
+
+            {% endif %}
+
+      {% endfor %}
+</ul>

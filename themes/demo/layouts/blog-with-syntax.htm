@@ -1,0 +1,74 @@
+description = "Default layout"
+
+[session]
+security = "all"
+==
+<!D{% component 'session' %}OCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>October CMS - {{ this.page.title }}</title>
+        <meta name="description" content="{{ this.page.meta_description }}">
+        <meta name="title" content="{{ this.page.meta_title }}">
+        <meta name="author" content="OctoberCMS">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="generator" content="OctoberCMS">
+        <link rel="icon" type="image/png" href="{{ 'assets/images/october.png'|theme }}">
+
+        <link href="{{ 'assets/dist/css/all.css'|theme }}" rel="stylesheet">
+        <link href="{{ 'assets/dist/helper/google-code-prettify/prettify.css'|theme }}" rel="stylesheet">
+        <link href="{{ 'assets/dist/css/style.css'|theme }}" rel="stylesheet">
+
+
+        <style>
+            .prettyprint ol.linenums > li { list-style-type: decimal; }
+
+            pre.prettyprint {
+                display: block;
+                overflow: auto;
+                width: auto;
+                max-height:500px; 
+                white-space: pre;
+                word-wrap: normal;
+                padding: 10px;   
+            }
+
+            table, th, td {
+             /* border: 1px solid black; */
+            }
+        </style>
+
+        {% styles %}
+
+
+    </head>
+    <body>
+
+        <!-- Header -->
+        <header id="layout-header">
+            {% partial 'site/header_bs4' %}
+        </header>
+
+
+        <!-- Content -->
+        <section id="layout-content" class="mt-5">
+            {% page %}
+        </section>
+
+
+        <!-- Footer -->
+        <footer id="layout-footer">
+            {% partial 'site/footer' %}
+        </footer>
+
+
+
+        <!-- Scripts -->
+        <script src="{{ 'assets/dist/js/all.js'|theme }}"></script>
+        <script src="{{ 'assets/dist/helper/google-code-prettify/prettify.js'|theme }}"></script>
+        <script src="{{ 'assets/dist/js/blog.js'|theme }}"></script>
+        {% framework extras %}
+        {% scripts %}
+
+    </body>
+</html>

@@ -1,0 +1,40 @@
+
+		<!-- start header -->
+		<header>
+			<div class="navbar navbar-default navbar-static-top">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+						<a class="navbar-brand" href="{{ 'home'|page }}"><span>CODe</span>-AHOLIC</a>
+					</div>
+					<div class="navbar-collapse collapse ">
+						<ul class="nav navbar-nav">
+							<li class="{% if this.page.id == 'home' %}active{% endif %}"><a href="{{ 'home'|page }}">Home</a></li>
+							<li class="{% if this.page.id == 'portfolio' %}active{% endif %}"><a href="{{ 'portfolio'|page }}">Portfolio</a></li>
+							<li class="{% if ((this.page.id == 'blog') or (this.page.id == 'blog-post')) %}active{% endif %}"><a href="{{ 'blog'|page({ slug:'all'}, {page: 'default'}) }}">Blog</a></li>
+							<li class="{% if this.page.id == 'contact' %}active{% endif %}"><a href="{{ 'contact'|page }}">Contact</a></li>
+							<li class="{% if this.page.id == 'login' %}active{% endif %}">
+								<a href="{{ 'login'|page }}">
+									{% if not user %}
+										Login
+									{% else %}
+										My Profile
+									{% endif %}
+								</a
+							</li>
+							
+							{% if user %}
+							<li><a href="#" data-request="onLogout" data-request-data="redirect: '/'">Sign out</a></li>
+							{% endif %}
+
+							<!-- <li class="{% if this.page.id == 'movies' %}active{% endif %}"><a href="{{ 'movies'|page }}">Movies</a></li> -->
+						</ul>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- end header -->

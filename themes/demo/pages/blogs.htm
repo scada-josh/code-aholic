@@ -1,0 +1,25 @@
+title = "Blogs"
+url = "/blogs"
+layout = "blog-with-syntax"
+is_hidden = 0
+
+[blogPosts]
+pageNumber = "{{ :page }}"
+postsPerPage = 10
+noPostsMessage = "No posts found"
+sortOrder = "published_at desc"
+categoryPage = 404
+postPage = 404
+==
+<div class="py-12" >
+    <div class="container">
+      <div class="row">
+        <div class="text-center mx-auto col-md-12">
+          <h1>Blogs</h1>
+        </div>
+      </div>
+      <div class="row">
+        {% component 'blogPosts' %}
+      </div>
+    </div>
+  </div>

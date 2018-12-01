@@ -1,0 +1,16 @@
+plugin:
+    name: 'devjosh.movies::lang.plugin.name'
+    description: 'devjosh.movies::lang.plugin.description'
+    author: DevJosh
+    icon: oc-icon-video-camera
+    homepage: ''
+navigation:
+    main-menu-item:
+        label: Movies
+        url: devjosh/movies/movies
+        icon: icon-video-camera
+        sideMenu:
+            side-menu-item2:
+                label: Genre
+                url: devjosh/movies/genretest
+                icon: icon-tag

@@ -1,0 +1,10 @@
+name: Movies
+form: $/devjosh/movies/models/movie/fields.yaml
+modelClass: Devjosh\Movies\Models\Movie
+defaultRedirect: devjosh/movies/movies
+create:
+    redirect: 'devjosh/movies/movies/update/:id'
+    redirectClose: devjosh/movies/movies
+update:
+    redirect: devjosh/movies/movies
+    redirectClose: devjosh/movies/movies

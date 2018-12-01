@@ -1,0 +1,21 @@
+<h1>Search results for "{{ blogTagSearch.tag.name }}"</h1>
+
+<hr>
+
+{% if blogTagSearch.posts %}
+    <ul>
+        {% for Post in blogTagSearch.tag.posts %}
+             <li>
+                 <h3><a href="{{Post.url}}">{{ Post.title }}</a></h3>
+                 {% if Post.categories %}
+                 - published in
+                    {% for category in Post.categories %}
+                        <a href="{{category.url|e}}">{{category.name}}</a>{% if not loop.last %}, {% endif %}
+                    {% endfor %}
+                 {% endif %}
+             </li>
+        {% endfor %}
+    </ul>
+{% else %}
+    No posts found.
+{% endif %}
