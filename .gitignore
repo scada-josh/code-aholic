@@ -17,6 +17,7 @@ selenium.php
 composer.lock
 node_modules
 _assets_
+package-lock.json
 
 # for phpStorm
 .idea
